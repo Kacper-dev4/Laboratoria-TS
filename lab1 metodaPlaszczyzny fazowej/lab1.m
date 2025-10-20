@@ -2,10 +2,10 @@ clear all
 clc
 
 
-for i = 1:4
- aw = [0.5, 1, 2, 5];
- a=aw(i);
-%a = 1;
+for i = 1:1
+ %aw = [0.5, 1, 2, 5];
+ %a=aw(i);
+a = 1;
 %bw = [1,2,3,8];
 %b = bw(i);
 b=2;
@@ -23,10 +23,15 @@ t = out.tout;
 figure(1)
 hold on
 plot(x,xprim)
-title('Portret fazowy')
+fimplicit(@(x,y) 0.5*y.^2 + 1.5*x.^2 - 0.75, 'LineWidth', 1)
+
+fimplicit(@(x,y) 0.5*(y + x - (2/3)*x.^3).^2 + 1.5*x.^2 - 9/4, [-3 3 -5 5], 'LineWidth', 1)
+
+title('Obszary stabilności')
 xlabel('x')
 ylabel('xprim')
-legend('a=0.5', 'a=1', 'a=2','a=5')
+legend('Dokładny obszar stabilności','Obszar stabilności z metody Lapunowa','Obszar stabilności z podstawienia Lienarda')
+%legend('a=0.5', 'a=1', 'a=2','a=5')
 %legend('b=1', 'b=2', 'b=3', 'b=8')
 %legend('c=1.5', 'c=3', 'c=6', 'c=12')
 end
