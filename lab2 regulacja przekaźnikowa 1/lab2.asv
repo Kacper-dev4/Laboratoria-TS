@@ -172,15 +172,15 @@ out = sim('lab2sim.slx');
 e3 = out.e3.Data;
 eprim3 = out.eprim3.Data;
 
-y1 = -3:0.1:1;
+y1 = -1.5:0.1:1;
 x1 = a3*ones(1,length(y1));
-y2 = -3:0.1:1;
+y2 = -1.5:0.1:1;
 x2 = -a3*ones(1,length(y2));
 
-y3 = -1:0.1:1;
+y3 = -1.5:0.1:1;
 x3 = b3*ones(1,length(y1));
-y4 = -3:0.1:1;
-x4 = -b1*ones(1,length(y2));
+y4 = -1.5:0.1:1;
+x4 = -b3*ones(1,length(y2));
 
 figure(6)
 hold on
@@ -188,7 +188,7 @@ plot(t,e3)
 legend('k=1','k=2','k=3','k=4','k=5')
 xlabel('t')
 ylabel('e')
-
+title(sprintf('Δ = %.2f', zmienna));
 
 figure(7)
 hold on

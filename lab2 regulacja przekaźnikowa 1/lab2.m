@@ -156,8 +156,7 @@ plot(x3,y3,'--','Color',[0,0,0])
 plot(x4,y4,'--','Color',[0,0,0])
 end
 legend('k=1','k=2','k=3','k=4','k=5','proste przełączeń')
-
-
+title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
 
 
 
@@ -188,7 +187,7 @@ plot(t,e3)
 legend('k=1','k=2','k=3','k=4','k=5')
 xlabel('t')
 ylabel('e')
-
+title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
 
 figure(7)
 hold on
@@ -202,7 +201,7 @@ plot(x3,y3,'--','Color',[0,0,0])
 plot(x4,y4,'--','Color',[0,0,0])
 end
 legend('T=1','T=2','T=3','T=4','T=5','proste przełączeń')
-
+title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
 
 figure(8)
 hold on
@@ -210,6 +209,7 @@ plot(t,e3)
 legend('T=1','T=2','T=3','T=4','T=5')
 xlabel('t')
 ylabel('e')
+title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
 
 
 end
