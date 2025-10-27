@@ -120,13 +120,17 @@ eprim03 = 0;
 
 
 for i=1:5
-T3 = 1;
-a3 = 2;
+
+
+
+T3 = 2;
+a3 = i+1;
 b3 = 1;
-k3 = i;
+k3 = 1;
 B3 = 2;
 w3 = 0;
-t = out.tout;
+
+
 
 y1 = -3:0.1:1;
 x1 = a3*ones(1,length(y1));
@@ -155,17 +159,12 @@ plot(x2,y2,'--','Color',[0,0,0])
 plot(x3,y3,'--','Color',[0,0,0])
 plot(x4,y4,'--','Color',[0,0,0])
 end
-legend('k=1','k=2','k=3','k=4','k=5','proste przełączeń')
-title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
+legend('Δ=1','Δ=2','Δ=3','Δ=4','Δ=5','proste przełączeń')
+%title(sprintf('k = %.d, A = %.2f', a3-b3,(a3+b3)/2));
 
 
 
-T3 = i;
-a3 = 2;
-b3 = 1;
-k3 = 1;
-B3 = 2;
-w3 = 0;
+
 t = out.tout;
 out = sim('lab2sim.slx');
 e3 = out.e3.Data;
@@ -184,10 +183,19 @@ x4 = -b3*ones(1,length(y2));
 figure(6)
 hold on
 plot(t,e3)
-legend('k=1','k=2','k=3','k=4','k=5')
+legend('Δ=1','Δ=2','Δ=3','Δ=4','Δ=5')
 xlabel('t')
 ylabel('e')
-title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
+%title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
+
+
+T3 = 2;
+a3 = i+1;
+b3 = i;
+k3 = 1;
+B3 = 2;
+w3 = 0;
+t = out.tout;
 
 figure(7)
 hold on
@@ -200,8 +208,8 @@ plot(x2,y2,'--','Color',[0,0,0])
 plot(x3,y3,'--','Color',[0,0,0])
 plot(x4,y4,'--','Color',[0,0,0])
 end
-legend('T=1','T=2','T=3','T=4','T=5','proste przełączeń')
-title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
+legend('A=1.5','A=2.5','A=3.5','A=4.5','A=5.5','proste przełączeń')
+%title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
 
 figure(8)
 hold on
@@ -209,7 +217,7 @@ plot(t,e3)
 legend('T=1','T=2','T=3','T=4','T=5')
 xlabel('t')
 ylabel('e')
-title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
+%title(sprintf('Δ = %.d, A = %.2f', a3-b3,(a3+b3)/2));
 
 
 end
