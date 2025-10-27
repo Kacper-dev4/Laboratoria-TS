@@ -1,15 +1,12 @@
 clear all 
 clc
-
-
-for i=1:10
 a = 2;
 e0 = 4;
 eprim0 = 0;
 w = 0;
 stop_time = 20;
-k1 = i*5;
-k2 = i+3;
+k1 = 30;
+k2 = 2;
 B = 2;
 
 out = sim('lab3sim.slx');
@@ -17,8 +14,5 @@ out = sim('lab3sim.slx');
 e = out.e.Data;
 eprim = out.eprim.Data;
 
-figure(1)
-hold on
+figure
 plot(e,eprim)
-
-end
