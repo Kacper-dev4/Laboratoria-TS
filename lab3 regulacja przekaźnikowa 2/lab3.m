@@ -3,7 +3,7 @@ clc
 k=1;
 kr=1;
 Td=1;
-b=2;
+b=0.5;
 %% zad1
 T = 2;
 stop_time = 20;
@@ -126,7 +126,7 @@ k1 = 2;
 k2 = 1;
 B = 2;
 kr = 1;
-T = 1;
+T = 2;
 
 Td = 1.5;
 
@@ -152,24 +152,59 @@ ylabel('e')
 legend('e0 = 1.1','e0 = 1.3','e0 = 1.5','e0 = 1.6','e0 = 1.7')
 
 
+a = 1;
+e0 = 0;
+eprim0 = 0;
+w = i+1;
+k=1;
+k1 = 2;
+k2 = 1;
+B = 2;
+kr = 1;
+T = 2;
+
+Td = 1.5;
+
+out = sim('lab3sim.slx');
+e = out.e3.Data;
+eprim = out.eprim3.Data;
+t = out.tout;
+
+figure(7)
+hold on
+plot(e,eprim);
+xlabel('e')
+ylabel('eprim')
+%legend( 'Td = 1', 'Td = 2','Td = 3','Td = 4','Td = 5')
+legend('w = 2','w = 3','w = 4','w = 5','w = 6')
+
+figure(8)
+hold on 
+plot(t,e)
+xlabel('t')
+ylabel('e')
+%legend( 'Td = 1', 'Td = 2','Td = 3','Td = 4','Td = 5')
+legend('w = 2','w = 3','w = 4','w = 5','w = 6')
+
+
 end
 
 %% Zad4 
 
-stop_time = 40;
+stop_time = 100;
 %i=1.1:0.01:1.2
 for i=1:5
-a = 3;
-b = 1;
-e0 = -6;
+a = 5;
+b = 2;
+e0 = -10;
 eprim0 = 0;
 w = 0;
 k=1;
 k1 = 2;
 k2 = 1;
-B = 3;
+B = 2;
 kr = 1;
-T = 2;
+T = 10;
 
 Td = i^3;
 
@@ -178,18 +213,136 @@ e = out.e4.Data;
 eprim = out.eprim4.Data;
 t = out.tout;
 
-figure(7)
+figure(9)
 hold on
 plot(e,eprim);
 xlabel('e')
 ylabel('eprim')
-legend( 'Td = 1', 'Td = 2','Td = 3','Td = 4','Td = 5')
+legend( 'Td = 1', 'Td = 4','Td = 9','Td = 16','Td = 25')
+grid on
 
-figure(8)
+figure(10)
 hold on 
 plot(t,e)
 xlabel('t')
 ylabel('e')
-legend( 'Td = 1', 'Td = 2','Td = 3','Td = 4','Td = 5')
+legend( 'Td = 1', 'Td = 4','Td = 9','Td = 16','Td = 25')
+
+if i==5
+    break;
+end
+
+% a = i+1;
+% b = 1;
+% e0 = -7;
+% eprim0 = 0;
+% w = 0;
+% k=1;
+% k1 = 2;
+% k2 = 1;
+% B = 5;
+% kr = 1;
+% T = 4;
+% 
+% Td = 1.5;
+% 
+% out = sim('lab3sim.slx');
+% e = out.e4.Data;
+% eprim = out.eprim4.Data;
+% t = out.tout;
+% 
+% figure(11)
+% hold on
+% plot(e,eprim);
+% xlabel('e')
+% ylabel('eprim')
+% legend( 'Δ= 1','Δ = 2','Δ = 3','Δ = 4')
+% 
+% figure(12)
+% hold on 
+% plot(t,e)
+% xlabel('t')
+% ylabel('e')
+% legend( 'Δ= 1','Δ = 2','Δ = 3','Δ = 4')
 
 end
+%% poslizg
+a = 2;
+b = 1;
+e0 = -10;
+eprim0 = 0;
+w = 0;
+k=1;
+k1 = 2;
+k2 = 1;
+B = 2;
+kr = 1;
+T = 2;
+
+Td = 5;
+
+x = 1:0.01:10;
+y1 = (x-b)*(-1/Td);
+y2 = (x-a)*(-1/Td);
+out = sim('lab3sim.slx');
+e = out.e4.Data;
+eprim = out.eprim4.Data;
+t = out.tout;
+
+figure(13)
+hold on
+plot(e,eprim);
+plot(x,y1,'--','Color',[0,0,0])
+plot(x,y2,'--','Color',[0,0,0])
+xlabel('e')
+ylabel('eprim')
+
+
+figure(14)
+hold on 
+plot(t,e)
+xlabel('t')
+ylabel('e')
+
+
+
+a = 2;
+b = 1;
+e0 = 10;
+eprim0 = 0;
+w = 0;
+k=5;
+k1 = 2;
+k2 = 1;
+B = 10;
+kr = 1;
+T = 2;
+
+Td = 0.75;
+
+x = -10:0.01:10;
+y1 = (x-b)*(-1/Td);
+y2 = (x-a)*(-1/Td);
+y3 = (x+b)*(-1/Td);
+y4 = (x+a)*(-1/Td);
+out = sim('lab3sim.slx');
+e = out.e4.Data;
+eprim = out.eprim4.Data;
+t = out.tout;
+
+figure(15)
+hold on
+plot(e,eprim);
+plot(x,y1,'--','Color',[0,0,0])
+plot(x,y2,'--','Color',[0,0,0])
+plot(x,y3,'--','Color',[0,0,0])
+plot(x,y4,'--','Color',[0,0,0])
+xlabel('e')
+ylabel('eprim')
+ylim([-5,15])
+
+figure(16)
+hold on 
+plot(t,e)
+xlabel('t')
+ylabel('e')
