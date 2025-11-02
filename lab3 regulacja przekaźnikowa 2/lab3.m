@@ -3,6 +3,7 @@ clc
 k=1;
 kr=1;
 Td=1;
+b=2;
 %% zad1
 T = 2;
 stop_time = 20;
@@ -94,12 +95,18 @@ out = sim('lab3sim.slx');
 
 e = out.e2.Data;
 eprim = out.eprim2.Data;
-
+t = out.tout;
 figure(4)
 hold on
 plot(e,eprim)
 xlabel('e')
 ylabel('eprim')
+legend('k1 = 0', 'k1 = 1', 'k1 = 2','k1 = 3','k1 = 4')
+figure(101)
+hold on
+plot(t,e)
+xlabel('t')
+ylabel('e')
 legend('k1 = 0', 'k1 = 1', 'k1 = 2','k1 = 3','k1 = 4')
 
 end
