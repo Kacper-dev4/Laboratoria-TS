@@ -110,6 +110,50 @@ stop_time = 40;
 %i=1.1:0.01:1.2
 for i=1:5
 a = 1;
+e0w = [1.1,1.3,1.5,1.6,1.7];
+e0 = -e0w(i);
+eprim0 = 0;
+w = 0;
+k=2;
+k1 = 2;
+k2 = 1;
+B = 2;
+kr = 1;
+T = 1;
+
+Td = 1.5;
+
+out = sim('lab3sim.slx');
+e = out.e3.Data;
+eprim = out.eprim3.Data;
+t = out.tout;
+
+figure(5)
+hold on
+plot(e,eprim);
+xlabel('e')
+ylabel('eprim')
+%legend( 'Td = 1', 'Td = 2','Td = 3','Td = 4','Td = 5')
+legend('e0 = 1.1','e0 = 1.3','e0 = 1.5','e0 = 1.6','e0 = 1.7')
+
+figure(6)
+hold on 
+plot(t,e)
+xlabel('t')
+ylabel('e')
+%legend( 'Td = 1', 'Td = 2','Td = 3','Td = 4','Td = 5')
+legend('e0 = 1.1','e0 = 1.3','e0 = 1.5','e0 = 1.6','e0 = 1.7')
+
+
+end
+
+%% Zad4 
+
+stop_time = 40;
+%i=1.1:0.01:1.2
+for i=1:5
+a = 3;
+b = 1;
 e0 = -6;
 eprim0 = 0;
 w = 0;
@@ -123,18 +167,18 @@ T = 2;
 Td = i^3;
 
 out = sim('lab3sim.slx');
-e = out.e3.Data;
-eprim = out.eprim3.Data;
+e = out.e4.Data;
+eprim = out.eprim4.Data;
 t = out.tout;
 
-figure(5)
+figure(7)
 hold on
 plot(e,eprim);
 xlabel('e')
 ylabel('eprim')
 legend( 'Td = 1', 'Td = 2','Td = 3','Td = 4','Td = 5')
 
-figure(6)
+figure(8)
 hold on 
 plot(t,e)
 xlabel('t')
@@ -142,6 +186,3 @@ ylabel('e')
 legend( 'Td = 1', 'Td = 2','Td = 3','Td = 4','Td = 5')
 
 end
-
-%% Zad4 
-
