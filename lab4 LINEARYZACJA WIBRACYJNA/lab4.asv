@@ -63,8 +63,6 @@ M{1} = [ Tfd 1 ];
  M{4} = [ Tfd^4  4*Tfd^3  6*Tfd^2  4*Tfd  1 ];
  M{5} = [ Tfd^5  5*Tfd^4  10*Tfd^3  10*Tfd^2  5*Tfd  1 ];
 for i=1:5
-
-% a)    
 A = 1;
 Ax=10;
 Tfd = 0.3;
@@ -82,7 +80,6 @@ xlabel('x')
 ylabel('y')
 legend('B=1','B=2','B=3','B=4','B=5')
 
-% b)
 
 T=1/5;
 A = i^2;
@@ -102,8 +99,6 @@ xlabel('x')
 ylabel('y')
 legend('A=1','A=4','A=9','A=16','A=25')
 
-
-% c)
 T = i;
 A = 1;
 Ax=10;
@@ -125,12 +120,3 @@ legend('T=1','T=2','T=3','T=4','T=5')
 
 end
 
-
-
-%% Zad4
-
-% a)
-
-% b)
-
-% c)
