@@ -129,7 +129,7 @@ end
 
 
 %% Zad4
-stop_time = 20;
+stop_time = 100;
 % a)
 % w = 1;
 % kr = 2.3;
@@ -174,6 +174,41 @@ stop_time = 20;
 
 
 % b)
+
+T =1/100;
+A = 60;
+Ax=10;
+Tfd = 0.3;
+mianownik = M{3};
+B = 3;
+out = sim('lab444.slx');
+
+x = out.x.Data;
+y = out.y.Data;
+
+
+[~, idxMin] = min(x);
+[~, idxMax] = max(x);
+x1 = x(idxMin);
+y1 = y(idxMin);
+x2 = x(idxMax);
+y2 = y(idxMax);
+
+k = (y2 - y1) / (x2 - x1);
+x_fit = linspace(x1, x2, 200);
+y_fit = y1 + k * (x_fit - x1);
+
+figure(10); clf;
+hold on;
+plot(x, y, 'b', 'LineWidth', 1.5);
+plot(x_fit, y_fit, '--r', 'LineWidth', 1.5);
+xlabel('x');
+ylabel('y');
+title('Krzywa i prosta między min(x) i max(x)');
+text(0.05, 0.95, sprintf('Nachylenie = %.3f', k), ...
+     'Units', 'normalized', 'FontSize', 12, 'Color', 'r');
+
+hold off;
 
 
 
