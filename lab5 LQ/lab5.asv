@@ -1,0 +1,32 @@
+clear all 
+clc
+%%% A 
+%% Zad1
+s = tf('s');
+
+ko = 1;
+T1 = 1;
+T2 = 1;
+T3 = 8;
+
+k = ko/((1+s*T1)*(1+s*T2)*(1+s*T3));
+[A,B,C,D] = tf2ss_3rzad(k);
+
+%% Zad2
+Q = C'*C;
+R = 1;
+Ts= 0.01;
+[K,S,e] = lqr(A,B,Q,R);
+%% Zad3
+
+time = 50;
+x0 = [1,0,0;
+    1,2,3;
+    0,1,1];
+
+czas
+
+
+
+
+
