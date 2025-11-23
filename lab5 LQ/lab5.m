@@ -187,7 +187,8 @@ disp(results);
 %% Zad 6
 
 zadaneWartosciWlasne = [-4,-5,-7];
-h = place(A',C',zadaneWartosciWlasne);
+h = place(A',C',zadaneWartosciWlasne');
+h=h';
 
 %% Zad7
 
@@ -201,3 +202,74 @@ t1 = 2;
 xo_obs = 0;
 xo = 1;
 t = sim("B_Model.slx");
+for i=1:3
+    leg_text = sprintf('x%g',i);
+    figure(13)
+    hold on
+    plot(t,x(:,i),'DisplayName', leg_text)
+    xlabel('t')
+    ylabel('x(t)')
+    leg_text = sprintf('xo%g',i);
+    legend()
+
+    figure(14)
+    hold on
+    plot(t,xO(:,i),'DisplayName', leg_text)
+    xlabel('t')
+    ylabel('xo(t)')
+    legend()
+end
+
+%% Zad 9
+zadaneWartosciWlasneW{1} = [-1,-2,-3];
+zadaneWartosciWlasneW{2} = [-1,-5,-10];
+zadaneWartosciWlasneW{3} = [-2,-4,-8];
+u = 1;
+t1 = 2;
+xo_obs = 0;
+xo = 1;
+
+
+for i=1:3
+zadaneWartosciWlasne = zadaneWartosciWlasneW{i};
+h = place(A',C',zadaneWartosciWlasne');
+hw{i} = h;
+h=h';
+t = sim("B_Model.slx");
+leg1 = sprintf('x%g',1);
+leg2 = sprintf('xo%g',1);
+figure(11+i*3)
+ hold on
+    plot(t,x(:,1))
+    plot(t,xO(:,1))
+    xlabel('t')
+    ylabel('x(t) oraz xo(t)')
+    legend(leg1, leg2)
+     title(sprintf('Wartości składowe [%d %d %d]',zadaneWartosciWlasne(1),zadaneWartosciWlasne(2),zadaneWartosciWlasne(3) ))
+hold off
+
+leg1 = sprintf('x%g',1);
+leg2 = sprintf('xo%g',1);
+figure(12+i*3)
+ hold on
+    plot(t,x(:,2))
+    plot(t,xO(:,2))
+    xlabel('t')
+    ylabel('x(t) oraz xo(t)')
+    legend(leg1, leg2)
+    title(sprintf('Wartości składowe [%d %d %d]',zadaneWartosciWlasne(1),zadaneWartosciWlasne(2),zadaneWartosciWlasne(3) ))
+hold off
+
+leg1 = sprintf('x%g',1);
+leg2 = sprintf('xo%g',1);
+figure(13+i*3)
+ hold on
+    plot(t,x(:,3))
+    plot(t,xO(:,3))
+    xlabel('t')
+    ylabel('x(t) oraz xo(t)')
+    legend(leg1, leg2)
+     title(sprintf('Wartości składowe [%d %d %d]',zadaneWartosciWlasne(1),zadaneWartosciWlasne(2),zadaneWartosciWlasne(3) ))
+hold off
+
+end
