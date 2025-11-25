@@ -221,7 +221,7 @@ for i=1:3
 end
 
 %% Zad 9
-zadaneWartosciWlasneW{1} = [-1,-1.5,-2];
+zadaneWartosciWlasneW{1} = [-1,-2,-3];
 zadaneWartosciWlasneW{2} = [-1,-5,-10];
 zadaneWartosciWlasneW{3} = [-2,-4,-8];
 u = 1;
@@ -245,6 +245,7 @@ figure(11+i*3)
     xlabel('t')
     ylabel('x(t) oraz xo(t)')
     legend(leg1, leg2)
+     title(sprintf('Wartości składowe [%d %d %d]',zadaneWartosciWlasne(1),zadaneWartosciWlasne(2),zadaneWartosciWlasne(3) ))
 hold off
 
 leg1 = sprintf('x%g',1);
@@ -256,7 +257,7 @@ figure(12+i*3)
     xlabel('t')
     ylabel('x(t) oraz xo(t)')
     legend(leg1, leg2)
-    title(sprintf('Wartości składowe %d %d'))
+    title(sprintf('Wartości składowe [%d %d %d]',zadaneWartosciWlasne(1),zadaneWartosciWlasne(2),zadaneWartosciWlasne(3) ))
 hold off
 
 leg1 = sprintf('x%g',1);
@@ -268,6 +269,58 @@ figure(13+i*3)
     xlabel('t')
     ylabel('x(t) oraz xo(t)')
     legend(leg1, leg2)
+     title(sprintf('Wartości składowe [%d %d %d]',zadaneWartosciWlasne(1),zadaneWartosciWlasne(2),zadaneWartosciWlasne(3) ))
 hold off
 
 end
+
+
+%%% C
+
+
+%% Zad10 
+
+% Schemat w Simulinku 
+
+
+%% Zad 11
+time = 30;
+xo = [0,0,0];
+x_obs = 0;
+
+w0 = 1;
+Rw = [0.05,0.1,0.3,0.5,1];
+for i=1:5
+R  = Rw(i);
+leg_text = sprintf('p = %.2f',Rw(i)); 
+[K,S,lambda] = lqr(A,B,Q,R);
+t = sim("C_Model_lab5.slx");
+
+figure(23)
+hold on
+plot(t,y,'DisplayName',leg_text)
+xlabel('t')
+ylabel('y(t)')
+legend()
+
+figure(24)
+hold on
+plot(t,u,'DisplayName',leg_text)
+xlabel('t')
+ylabel('y(t)')
+legend()
+
+
+end
+
+%%% D
+
+%% Zad12
+% Model w Simulinku
+
+%% Zad13
+
+k0 = -1*C*inv(A)*B;
+
+
+

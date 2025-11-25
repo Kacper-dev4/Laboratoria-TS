@@ -273,3 +273,79 @@ figure(13+i*3)
 hold off
 
 end
+
+
+%%% C
+
+
+%% Zad10 
+
+% Schemat w Simulinku 
+
+
+%% Zad 11
+time = 30;
+xo = [0,0,0];
+x_obs = 0;
+
+w0 = 1;
+Rw = [0.05,0.1,0.3,0.5,1];
+for i=1:5
+R  = Rw(i);
+leg_text = sprintf('p = %.2f',Rw(i)); 
+[K,S,lambda] = lqr(A,B,Q,R);
+t = sim("C_Model_lab5.slx");
+
+figure(23)
+hold on
+plot(t,y,'DisplayName',leg_text)
+xlabel('t')
+ylabel('y(t)')
+legend()
+
+figure(24)
+hold on
+plot(t,u,'DisplayName',leg_text)
+xlabel('t')
+ylabel('y(t)')
+legend()
+
+end
+
+%%% D
+
+%% Zad12
+% Model w Simulinku
+
+%% Zad13
+
+k0 = -1*C*inv(A)*B;
+l = [1,0,0];
+
+time = 30;
+xo = [0,0,0];
+x_obs = 0;
+
+w0 = 1;
+Rw = [0.05,0.1,0.3,0.5,1];
+for i=1:5
+R  = Rw(i);
+leg_text = sprintf('p = %.2f',Rw(i)); 
+[K,S,lambda] = lqr(A,B,Q,R);
+t = sim("D_Model.slx");
+
+figure(25)
+hold on
+plot(t,y,'DisplayName',leg_text)
+xlabel('t')
+ylabel('y(t)')
+legend()
+
+figure(26)
+hold on
+plot(t,u,'DisplayName',leg_text)
+xlabel('t')
+ylabel('y(t)')
+legend()
+
+end
